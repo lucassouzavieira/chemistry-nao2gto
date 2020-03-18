@@ -2,7 +2,7 @@
 echo "This script will install developments dependency for chemistry-nao2gto on $(uname -r) environment"
 
 # 3thd party libraries
-cd 3thd_party/
+cd libs/
 
 # Catch2 Test Framework C++
 git clone https://github.com/catchorg/Catch2.git

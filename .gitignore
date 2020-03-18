@@ -7,3 +7,4 @@ CMakeFiles/
 *.a
 Makefile
 bin/
+input/

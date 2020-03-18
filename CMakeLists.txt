@@ -18,9 +18,9 @@ file(GLOB SRC_FILES
         src/*.h)
 
 file(GLOB THRD_PARTY
-        3thd_party/*/*.h
-        3thd_party/*/*.hpp
-        3thd_party/*/*.cpp)
+        libs/*/*.h
+        libs/*/*.hpp
+        libs/*/*.cpp)
 
 file(GLOB UNIT_TESTS
         tests/*.h)
@@ -28,7 +28,7 @@ file(GLOB UNIT_TESTS
 include_directories(
         include
         src
-        3thd_party)
+        libs)
 
 add_library(chemistry-nao2gto ${INCLUDE_FILES} ${SRC_FILES} ${THRD_PARTY}  main.cpp)
 

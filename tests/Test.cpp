@@ -17,17 +17,7 @@
  *   along with dead-reckoning simulation. If not, see <http://www.gnu.org/licenses/>.    *
  *****************************************************************************************/
 
-#include <dbg.h>
-#include <iostream>
-#include <InputHandler.h>
+#include <catch2/catch.hpp>
 
-#define DEBUG 1
+#define CATCH_CONFIG_MAIN
 
-using namespace std;
-using namespace nao2gto;
-
-int main(int argc, char *argv[]) {
-    auto g = new InputHandler("../input/H_gga.ion.xml");
-    std::cout << g->getMass() << std::endl;
-    return 0;
-}

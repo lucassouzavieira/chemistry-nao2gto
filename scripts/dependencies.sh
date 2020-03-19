@@ -12,10 +12,9 @@ sudo cmake --build build/ --target install
 cd ../
 
 # DBG macro
-git clone https://github.com/sharkdp/dbg-macro
+git clone https://github.com/sharkdp/dbg-macro.git
 sudo cp dbg-macro/dbg.h /usr/include/dbg.h
 
-#
-git clone https://github.com/zeux/pugixml
-cd pugixml/
-git checkout v1.10
+# Pugixml
+git clone --branch v1.10 https://github.com/zeux/pugixml.git
+sudo cp pugixml/src/* /usr/include/

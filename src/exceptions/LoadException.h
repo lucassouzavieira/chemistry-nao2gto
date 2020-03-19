@@ -17,17 +17,22 @@
  *   along with dead-reckoning simulation. If not, see <http://www.gnu.org/licenses/>.    *
  *****************************************************************************************/
 
-#include <dbg.h>
-#include <iostream>
-#include <InputHandler.h>
+#ifndef NAO2GTO_LOADEXCEPTION_H
+#define NAO2GTO_LOADEXCEPTION_H
 
-#define DEBUG 1
+#include <exception>
 
 using namespace std;
-using namespace nao2gto;
 
-int main(int argc, char *argv[]) {
-    auto g = new InputHandler("../input/H_gga.ion.xml");
-    std::cout << g->getMass() << std::endl;
-    return 0;
+namespace nao2gto {
+    namespace exceptions {
+        class LoadException : public exception {
+        public:
+            const char *what() const throw() override {
+                return "Loading xml file error.";
+            }
+        };
+    }
 }
+
+#endif

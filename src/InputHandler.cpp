@@ -17,17 +17,38 @@
  *   along with dead-reckoning simulation. If not, see <http://www.gnu.org/licenses/>.    *
  *****************************************************************************************/
 
-#include <dbg.h>
-#include <iostream>
-#include <InputHandler.h>
-
-#define DEBUG 1
+#include <pugixml.hpp>
+#include "InputHandler.h"
+#include "exceptions/LoadException.h"
 
 using namespace std;
-using namespace nao2gto;
 
-int main(int argc, char *argv[]) {
-    auto g = new InputHandler("../input/H_gga.ion.xml");
-    std::cout << g->getMass() << std::endl;
-    return 0;
+namespace nao2gto {
+
+    /**
+     * InputHandler constructor
+     *
+     * @param filename
+     * @throw nao2gto::exceptions::LoadException
+     */
+    InputHandler::InputHandler(const char *filename) {
+        this->document = pugi::xml_document();
+
+        auto result = this->document.load_file(filename);
+        if (!result) {
+            throw nao2gto::exceptions::LoadException();
+        }
+
+        std::cout << result << std::endl;
+    }
+
+    /**
+     * Get the mass attribute
+     *
+     * @return double
+     */
+    double InputHandler::getMass() {
+        auto value = this->document.child("ion").child("mass").child_value();
+        return stod(value);
+    }
 }

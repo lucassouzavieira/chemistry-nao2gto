@@ -17,17 +17,26 @@
  *   along with dead-reckoning simulation. If not, see <http://www.gnu.org/licenses/>.    *
  *****************************************************************************************/
 
-#include <dbg.h>
-#include <iostream>
-#include <InputHandler.h>
-
-#define DEBUG 1
+#include "Orbital.h"
+#include <pugixml.hpp>
+#include "exceptions/LoadException.h"
 
 using namespace std;
-using namespace nao2gto;
 
-int main(int argc, char *argv[]) {
-    auto g = new InputHandler("../input/H_gga.ion.xml");
-    std::cout << g->getMass() << std::endl;
-    return 0;
+namespace nao2gto {
+    /**
+     * Orbital constructor
+     */
+    Orbital::Orbital() {}
+
+    /**
+     * Builds an orbital object
+     *
+     * @param orbital
+     * @return nao2gto::Orbital
+     */
+    Orbital Orbital::factory(pugi::xml_node orbital) {
+        nao2gto::Orbital orb = Orbital();
+        return orb;
+    }
 }
